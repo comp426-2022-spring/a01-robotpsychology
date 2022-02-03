@@ -23,7 +23,6 @@ const port = args.port || 3000
 const indexHTML = fs.readFileSync("./www/index.html", "utf8", (err, data) => {
   if (err) {
     console.error(err)
-    return
     process.exit(1)
   }
   return data
