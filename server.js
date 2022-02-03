@@ -23,7 +23,10 @@ const port = args.port || 3000
 const indexHTML = fs.readFileSync("./www/index.html", "utf8", (err, data) => {
   if (err) {
     console.error(err)
-    return 1
+    process.on("uncaughtException", (err) => {
+      console.error("There was an uncaught error", err)
+      process.exit(1) //mandatory (as per the Node.js docs)
+    })
   }
   return data
 })
